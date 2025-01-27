@@ -13,7 +13,7 @@ const generateAccessandRefreshToken=async(userId)=>{
     }
     const accessToken= user.generateAccessToken()
 
-    console.log("Access token is this",accessToken)
+    // console.log("Access token is this",accessToken)
     const refreshToken= user.generateRefreshToken()
 
      user.refreshToken=refreshToken
@@ -98,7 +98,7 @@ const loginuser=asyncHandler(async (req,res)=>{
          }
 
         const{accessToken,refreshToken}=  await generateAccessandRefreshToken(user._id)
-        
+        // console.log("Accesstoken isnbbsvdcb ",accessToken,refreshToken)
        const loginuser=await User.findById(user._id).select("-password -refreshToken")
 
        const options={
@@ -124,7 +124,6 @@ const loginuser=asyncHandler(async (req,res)=>{
 
 const logoutuser=asyncHandler(async(req,res)=>{
 
-    
    await User.findByIdAndUpdate(
       req.user._id,
       {
